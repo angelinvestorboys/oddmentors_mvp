@@ -31,3 +31,9 @@ class MentorshipSession(BaseModel):
     def __str__(self):
         return f"Mentorship session between mentor {self.mentor.username} and mentee {self.mentee.username}"
     
+
+
+class Scheduler(BaseModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="mentors_schedule")
+    start_available_time = models.TimeField(null=True,blank=True)
+    end_available_time = models.TimeField(null=True,blank=True)
