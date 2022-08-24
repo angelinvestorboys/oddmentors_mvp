@@ -6,7 +6,6 @@
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Calendify | Responsive Bootstrap 4 Admin Dashboard Template</title>
-      
       <!-- Favicon -->
       <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" />
       
@@ -195,7 +194,7 @@
                                           aria-haspopup="true" aria-expanded="false">
                                           <img src="{% static 'assets/images/user/01.jpg' %}" class="avatar-40 img-fluid rounded" alt="user">
                                           <div class="caption ml-3">
-                                              <h6 class="mb-0 line-height">Rick O'shea<i class="las la-angle-down ml-3"></i></h6>
+                                              <h6 class="mb-0 line-height">{{request.user.username}}<i class="las la-angle-down ml-3"></i></h6>
                                           </div>
                                       </a>
                                       <div class="iq-sub-dropdown dropdown-menu user-dropdown" aria-labelledby="dropdownMenuButton3">
@@ -249,6 +248,7 @@
       </div>
       <div class="content-page">
     {% block content %}{% endblock content %}
+    </div>
     <!-- Wrapper End-->
     <footer class="iq-footer">
         <div class="container-fluid container">
