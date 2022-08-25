@@ -36,7 +36,7 @@ class LoginView(View):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return redirect("/")
+                return redirect("/dashboard")
             else:
                 messages.error(request, "Your account has been disabled.")
                 return redirect("common:login")
