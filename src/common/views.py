@@ -8,9 +8,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .send_mail import send_mail
 
 # Create your views here.
-def test_view(request):
+def dashboard(request):
     template_name = "dashboard.html"
     return render(request, template_name, context={})
+
+
+def create_event(request):
+    template_name = "create_event.html"
+    return render(request, template_name, context={})
+
 
 
 class LoginView(View):

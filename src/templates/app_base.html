@@ -14,7 +14,9 @@
       <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
       <link rel="stylesheet" href="{% static 'assets/vendor/@fortawesome/fontawesome-free/css/all.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css' %}">
-      <link rel="stylesheet" href="{% static 'assets/vendor/remixicon/fonts/remixicon.css' %}">  </head>
+      <link rel="stylesheet" href="{% static 'assets/vendor/remixicon/fonts/remixicon.css' %}">  
+
+    </head>
   <body class="fixed-top-navbar top-nav  ">
     <!-- loader Start -->
     <div id="loading">
@@ -30,7 +32,7 @@
                   <div class="d-flex align-items-center justify-content-between">
                       <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                           <i class="ri-menu-line wrapper-menu"></i>
-                          <a href="index.html" class="header-logo">
+                          <a href="/dashboard" class="header-logo">
                               <img src="{% static 'assets/images/mylogo.png' %}" class="img-fluid rounded-normal light-logo border rounded-border" alt="logo">
                           </a>
                       </div>
@@ -46,7 +48,7 @@
                               </div>
                               <ul id="iq-sidebar-toggle" class="iq-menu d-flex">
                                   <li class="active">
-                                      <a href="../backend/index.html" class="">
+                                      <a href="/dashboard" class="">
                                           <span>Dashboard</span>
                                       </a>
                                   </li>
@@ -55,11 +57,16 @@
                                           <span>My Schedule</span>
                                       </a>
                                   </li>
-                                  <li class="">
+                                  {% comment %} <li class="">
                                       <a href="../backend/main-integration.html" class="">
                                           <span>My Integrations</span>
                                       </a>
-                                  </li>
+                                  </li> {% endcomment %}
+                                  <li class="">
+                                    <a href="/mentors/search" class="">
+                                        <span>Find Mentors</span>
+                                    </a>
+                                </li>
                               </ul>
                           </nav>
                       </div>
@@ -195,7 +202,7 @@
                                           aria-haspopup="true" aria-expanded="false">
                                           <img src="{% static 'assets/images/user/01.jpg' %}" class="avatar-40 img-fluid rounded" alt="user">
                                           <div class="caption ml-3">
-                                              <h6 class="mb-0 line-height">Rick O'shea<i class="las la-angle-down ml-3"></i></h6>
+                                              <h6 class="mb-0 line-height">Adebisi<i class="las la-angle-down ml-3"></i></h6>
                                           </div>
                                       </a>
                                       <div class="iq-sub-dropdown dropdown-menu user-dropdown" aria-labelledby="dropdownMenuButton3">
@@ -208,22 +215,10 @@
                                                               <h6>Account Settings</h6>
                                                           </div>
                                                       </a>
-                                                      <a href="../backend/page-calendar-connections.html" class="iq-sub-card">
-                                                          <div class="media align-items-center">
-                                                              <i class="ri-calendar-line mr-3"></i>
-                                                              <h6>Calender Connections</h6>
-                                                          </div>
-                                                      </a>
-                                                      <a href="../backend/page-users.html" class="iq-sub-card">
-                                                          <div class="media align-items-center">
-                                                              <i class="ri-group-line mr-3"></i>
-                                                              <h6>Users</h6>
-                                                          </div>
-                                                      </a>
                                                       <a href="../backend/privacy-policy.html" class="iq-sub-card">
                                                           <div class="media align-items-center">
                                                               <i class="ri-lock-line mr-3"></i>
-                                                              <h6>Privacy & Security Settings</h6>
+                                                              <h6>Update Profile</h6>
                                                           </div>
                                                       </a>
                                                       <a href="#popup1" data-toggle="modal" data-target="#exampleModalCenter" class="iq-sub-card">
@@ -260,7 +255,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 text-right">
-                    Copyright 2021 <a href="#">Calendify</a> All Rights Reserved.
+                    Copyright 2022 <a href="#">Oddmentors</a> All Rights Reserved.
                 </div>
             </div>
         </div>

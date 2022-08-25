@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import LoginView,RegisterView ,ResetPasswordView, ChangePasswordView, Logout,FAQView ,HowItWorksView, test_view
+from .views import LoginView,RegisterView ,ResetPasswordView, ChangePasswordView, Logout,FAQView ,HowItWorksView, dashboard, create_event
 
 app_name = "common"
 
 urlpatterns = [
-    path("", test_view, name="test"),
+    path("dashboard", dashboard, name="dashboard"),
+    path("event/create", create_event, name="test"),
     path("login", LoginView.as_view(), name="login"),
     path("register", RegisterView.as_view(), name="register"),
     path("reset-password", ResetPasswordView.as_view(), name="reset-password"),
