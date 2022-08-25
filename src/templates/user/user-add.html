@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,15 +8,13 @@
       <title>Calendify | Responsive Bootstrap 4 Admin Dashboard Template</title>
       
       <!-- Favicon -->
-      <link rel="shortcut icon" href="../../static/assets/images/favicon.ico" />
+      <link rel="shortcut icon" href="../assets/images/favicon.ico" />
       
-      <link rel="stylesheet" href="../../static/assets/css/backend-plugin.min.css">
-      <link rel="stylesheet" href="../../static/assets/css/backend.css?v=1.0.1">
-      <link rel="stylesheet" href="../../static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-      <link rel="stylesheet" href="../../static/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-      <link rel="stylesheet" href="../../static/assets/vendor/remixicon/fonts/remixicon.css">
-
-    </head>
+      <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
+      <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.1">
+      <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="../assets/vendor/remixicon/fonts/remixicon.css">  </head>
   <body class="fixed-top-navbar  ">
     <!-- loader Start -->
     <div id="loading">
@@ -550,269 +549,151 @@
       <div class="content-page">
         <div class="container-fluid container">
          <div class="row">
-            <div class="col-lg-12">
-               <div class="card">
-                  <div class="card-body p-0">
-                     <div class="iq-edit-list usr-edit">
-                        <ul class="iq-edit-profile d-flex nav nav-pills">
-                           <li class="col-md-3 p-0">
-                              <a class="nav-link active" data-toggle="pill" href="#personal-information">
-                              Personal Information
-                              </a>
-                           </li>
-                           <li class="col-md-3 p-0">
-                              <a class="nav-link" data-toggle="pill" href="#chang-pwd">
-                              Change Password
-                              </a>
-                           </li>
-                           <li class="col-md-3 p-0">
-                              <a class="nav-link" data-toggle="pill" href="#emailandsms">
-                              Email and SMS
-                              </a>
-                           </li>
-                           <li class="col-md-3 p-0">
-                              <a class="nav-link" data-toggle="pill" href="#manage-contact">
-                              Manage Contact
-                              </a>
-                           </li>
-                        </ul>
+            <div class="col-xl-3 col-lg-4">
+                  <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Add New User</h4>
+                        </div>
+                     </div>
+                     <div class="card-body">
+                        <form>
+                           <div class="form-group">
+                              <div class="crm-profile-img-edit position-relative">
+                                 <img class="crm-profile-pic rounded-circle avatar-100" src="../assets/images/user/11.png" alt="profile-pic">
+                                 <div class="crm-p-image bg-primary">
+                                    <i class="las la-pen upload-button"></i>
+                                    <input class="file-upload" type="file" accept="image/*">
+                                 </div>
+                              </div>
+                           <div class="img-extension mt-3">
+                              <div class="d-inline-block align-items-center">
+                                    <span>Only</span>
+                                 <a href="javascript:void(0);">.jpg</a>
+                                 <a href="javascript:void(0);">.png</a>
+                                 <a href="javascript:void(0);">.jpeg</a>
+                                 <span>allowed</span>
+                              </div>
+                           </div>
+                           </div>
+                           <div class="form-group">
+                              <label>User Role:</label>
+                              <select class="form-control" id="selectuserrole">
+                                 <option>Select</option>
+                                 <option>Web Designer</option>
+                                 <option>Web Developer</option>
+                                 <option>Tester</option>
+                                 <option>Php Developer</option>
+                                 <option>Ios Developer </option>
+                              </select>
+                           </div>
+                           <div class="form-group">
+                              <label for="furl">Facebook Url:</label>
+                              <input type="text" class="form-control" id="furl" placeholder="Facebook Url">
+                           </div>
+                           <div class="form-group">
+                              <label for="turl">Twitter Url:</label>
+                              <input type="text" class="form-control" id="turl" placeholder="Twitter Url">
+                           </div>
+                           <div class="form-group">
+                              <label for="instaurl">Instagram Url:</label>
+                              <input type="text" class="form-control" id="instaurl" placeholder="Instagram Url">
+                           </div>
+                           <div class="form-group">
+                              <label for="lurl">Linkedin Url:</label>
+                              <input type="text" class="form-control" id="lurl" placeholder="Linkedin Url">
+                           </div>
+                        </form>
                      </div>
                   </div>
-               </div>
             </div>
-            <div class="col-lg-12">
-               <div class="iq-edit-list-data">
-                  <div class="tab-content">
-                     <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
-                        <div class="card">
-                           <div class="card-header d-flex justify-content-between">
-                              <div class="iq-header-title">
-                                 <h4 class="card-title">Personal Information</h4>
-                              </div>
-                           </div>
-                           <div class="card-body">
-                              <form>
-                                 <div class="form-group row align-items-center">
-                                    <div class="col-md-12">
-                                       <div class="profile-img-edit">
-                                          <div class="crm-profile-img-edit">
-                                             <img class="crm-profile-pic rounded-circle avatar-100" src="../assets/images/user/11.png" alt="profile-pic">
-                                             <div class="crm-p-image bg-primary">
-                                                <i class="las la-pen upload-button"></i>
-                                                <input class="file-upload" type="file" accept="image/*">
-                                             </div>
-                                          </div>                                          
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class=" row align-items-center">
-                                    <div class="form-group col-sm-6">
-                                       <label for="fname">First Name:</label>
-                                       <input type="text" class="form-control" id="fname" value="Barry">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label for="lname">Last Name:</label>
-                                       <input type="text" class="form-control" id="lname" value="Tech">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label for="uname">User Name:</label>
-                                       <input type="text" class="form-control" id="uname" value="Barry@01">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label for="cname">City:</label>
-                                       <input type="text" class="form-control" id="cname" value="Atlanta">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label class="d-block">Gender:</label>
-                                       <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="customRadio6" name="customRadio1" class="custom-control-input" checked="">
-                                          <label class="custom-control-label" for="customRadio6"> Male </label>
-                                       </div>
-                                       <div class="custom-control custom-radio custom-control-inline">
-                                          <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-                                          <label class="custom-control-label" for="customRadio7"> Female </label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label for="dob">Date Of Birth:</label>
-                                       <input  class="form-control" id="dob" value="1984-01-24">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label>Marital Status:</label>
-                                       <select class="form-control" id="exampleFormControlSelect1">
-                                          <option selected="">Single</option>
-                                          <option>Married</option>
-                                          <option>Widowed</option>
-                                          <option>Divorced</option>
-                                          <option>Separated </option>
-                                       </select>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label>Age:</label>
-                                       <select class="form-control" id="exampleFormControlSelect2">
-                                          <option>12-18</option>
-                                          <option>19-32</option>
-                                          <option selected="">33-45</option>
-                                          <option>46-62</option>
-                                          <option>63 > </option>
-                                       </select>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label>Country:</label>
-                                       <select class="form-control" id="exampleFormControlSelect3">
-                                          <option>Caneda</option>
-                                          <option>Noida</option>
-                                          <option selected="">USA</option>
-                                          <option>India</option>
-                                          <option>Africa</option>
-                                       </select>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                       <label>State:</label>
-                                       <select class="form-control" id="exampleFormControlSelect4">
-                                          <option>California</option>
-                                          <option>Florida</option>
-                                          <option selected="">Georgia</option>
-                                          <option>Connecticut</option>
-                                          <option>Louisiana</option>
-                                       </select>
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                       <label>Address:</label>
-                                       <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">
-                                       37 Cardinal Lane
-                                       Petersburg, VA 23803
-                                       United States of America
-                                       Zip Code: 85001
-                                       </textarea>
-                                    </div>
-                                 </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                              </form>
-                           </div>
+            <div class="col-xl-9 col-lg-8">
+                  <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">New User Information</h4>
                         </div>
                      </div>
-                     <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
-                        <div class="card">
-                           <div class="card-header d-flex justify-content-between">
-                              <div class="iq-header-title">
-                                 <h4 class="card-title">Change Password</h4>
-                              </div>
-                           </div>
-                           <div class="card-body">
-                              <form>
-                                 <div class="form-group">
-                                    <label for="cpass">Current Password:</label>
-                                    <a href="javascripe:void();" class="float-right">Forgot Password</a>
-                                    <input type="Password" class="form-control" id="cpass" value="">
+                     <div class="card-body">
+                        <div class="new-user-info">
+                           <form>
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <label for="fname">First Name:</label>
+                                    <input type="text" class="form-control" id="fname" placeholder="First Name">
                                  </div>
-                                 <div class="form-group">
-                                    <label for="npass">New Password:</label>
-                                    <input type="Password" class="form-control" id="npass" value="">
+                                 <div class="form-group col-md-6">
+                                    <label for="lname">Last Name:</label>
+                                    <input type="text" class="form-control" id="lname" placeholder="Last Name">
                                  </div>
-                                 <div class="form-group">
-                                    <label for="vpass">Verify Password:</label>
-                                    <input type="Password" class="form-control" id="vpass" value="">
+                                 <div class="form-group col-md-6">
+                                    <label for="add1">Street Address 1:</label>
+                                    <input type="text" class="form-control" id="add1" placeholder="Street Address 1">
                                  </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                              </form>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="tab-pane fade" id="emailandsms" role="tabpanel">
-                        <div class="card">
-                           <div class="card-header d-flex justify-content-between">
-                              <div class="iq-header-title">
-                                 <h4 class="card-title">Email and SMS</h4>
-                              </div>
-                           </div>
-                           <div class="card-body">
-                              <form>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="emailnotification">Email Notification:</label>
-                                    <div class="col-md-9 custom-control custom-switch">
-                                       <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
-                                       <label class="custom-control-label" for="emailnotification"></label>
-                                    </div>
+                                 <div class="form-group col-md-6">
+                                    <label for="add2">Street Address 2:</label>
+                                    <input type="text" class="form-control" id="add2" placeholder="Street Address 2">
                                  </div>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="smsnotification">SMS Notification:</label>
-                                    <div class="col-md-9 custom-control custom-switch">
-                                       <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
-                                       <label class="custom-control-label" for="smsnotification"></label>
-                                    </div>
+                                 <div class="form-group col-md-12">
+                                    <label for="cname">Company Name:</label>
+                                    <input type="text" class="form-control" id="cname" placeholder="Company Name">
                                  </div>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="npass">When To Email</label>
-                                    <div class="col-md-9">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email01">
-                                          <label class="custom-control-label" for="email01">You have new notifications.</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email02">
-                                          <label class="custom-control-label" for="email02">You're sent a direct message</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email03" checked="">
-                                          <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
-                                       </div>
-                                    </div>
+                                 <div class="form-group col-sm-12">
+                                    <label>Country:</label>
+                                    <select class="form-control" id="selectcountry">
+                                       <option>Select Country</option>
+                                       <option>Caneda</option>
+                                       <option>Noida</option>
+                                       <option >USA</option>
+                                       <option>India</option>
+                                       <option>Africa</option>
+                                    </select>
                                  </div>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                                    <div class="col-md-9">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email04">
-                                          <label class="custom-control-label" for="email04"> Upon new order.</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email05">
-                                          <label class="custom-control-label" for="email05"> New membership approval</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email06" checked="">
-                                          <label class="custom-control-label" for="email06"> Member registration</label>
-                                       </div>
-                                    </div>
+                                 <div class="form-group col-md-6">
+                                    <label for="mobno">Mobile Number:</label>
+                                    <input type="text" class="form-control" id="mobno" placeholder="Mobile Number">
                                  </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                              </form>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="tab-pane fade" id="manage-contact" role="tabpanel">
-                        <div class="card">
-                           <div class="card-header d-flex justify-content-between">
-                              <div class="iq-header-title">
-                                 <h4 class="card-title">Manage Contact</h4>
-                              </div>
-                           </div>
-                           <div class="card-body">
-                              <form>
-                                 <div class="form-group">
-                                    <label for="cno">Contact Number:</label>
-                                    <input type="text" class="form-control" id="cno" value="001 2536 123 458">
+                                 <div class="form-group col-md-6">
+                                    <label for="altconno">Alternate Contact:</label>
+                                    <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact">
                                  </div>
-                                 <div class="form-group">
+                                 <div class="form-group col-md-6">
                                     <label for="email">Email:</label>
-                                    <input type="text" class="form-control" id="email" value="Barryjone@demo.com">
+                                    <input type="email" class="form-control" id="email" placeholder="Email">
                                  </div>
-                                 <div class="form-group">
-                                    <label for="url">Url:</label>
-                                    <input type="text" class="form-control" id="url" value="https://getbootstrap.com">
+                                 <div class="form-group col-md-6">
+                                    <label for="pno">Pin Code:</label>
+                                    <input type="text" class="form-control" id="pno" placeholder="Pin Code">
                                  </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                              </form>
-                           </div>
+                                 <div class="form-group col-md-12">
+                                    <label for="city">Town/City:</label>
+                                    <input type="text" class="form-control" id="city" placeholder="Town/City">
+                                 </div>
+                              </div>
+                              <hr>
+                              <h5 class="mb-3">Security</h5>
+                              <div class="row">
+                                 <div class="form-group col-md-12">
+                                    <label for="uname">User Name:</label>
+                                    <input type="text" class="form-control" id="uname" placeholder="User Name">
+                                 </div>
+                                 <div class="form-group col-md-6">
+                                    <label for="pass">Password:</label>
+                                    <input type="password" class="form-control" id="pass" placeholder="Password">
+                                 </div>
+                                 <div class="form-group col-md-6">
+                                    <label for="rpass">Repeat Password:</label>
+                                    <input type="password" class="form-control" id="rpass" placeholder="Repeat Password ">
+                                 </div>
+                              </div>
+                              <div class="checkbox">
+                                 <label><input class="mr-2" type="checkbox">Enable Two-Factor-Authentication</label>
+                              </div>
+                              <button type="submit" class="btn btn-primary">Add New User</button>
+                           </form>
                         </div>
                      </div>
                   </div>
-               </div>
             </div>
          </div>
         </div>
@@ -882,14 +763,12 @@
         </div>
     </footer>
     <!-- Backend Bundle JavaScript -->
-    <script src="../../static/assets/js/backend-bundle.min.js"></script>
+    <script src="../assets/js/backend-bundle.min.js"></script>
     
     <!-- Chart Custom JavaScript -->
-    <script src="../../static/assets/js/customizer.js"></script>
+    <script src="../assets/js/customizer.js"></script>
     
     
     <!-- app JavaScript -->
-    <script src="../../static/assets/js/app.js"></script>
-
-</body>
+    <script src="../assets/js/app.js"></script>  </body>
 </html>
