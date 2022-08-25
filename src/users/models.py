@@ -40,6 +40,11 @@ class Profile(BaseModel):
     linkedin = models.CharField(max_length=200, default="https://www.linkedin.com/")
     personal_blog = models.CharField(max_length=200, default="https://www.facebook.com/")
 
+
+    def get_profile_completion_result():
+        full_score = 100
+        return full_score
+
     def save(self, *args, **kwargs):
         # Add a logic to check if refferal code already exists
         if self.refferal_code == None:

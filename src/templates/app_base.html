@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Calendify | Responsive Bootstrap 4 Admin Dashboard Template</title>
       <!-- Favicon -->
-      <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" />
+      <link rel="shortcut icon" href="{% static 'assets/images/mylogo.png' %}" />
       
       <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
@@ -214,7 +214,7 @@
                                                               <h6>Account Settings</h6>
                                                           </div>
                                                       </a>
-                                                      <a href="../backend/privacy-policy.html" class="iq-sub-card">
+                                                      <a href="/profile/edit/{{request.user.username}}" class="iq-sub-card">
                                                           <div class="media align-items-center">
                                                               <i class="ri-lock-line mr-3"></i>
                                                               <h6>Update Profile</h6>
