@@ -11,9 +11,15 @@ from string import ( punctuation, whitespace, digits, ascii_lowercase, ascii_upp
 
 
 # Create your views here.
-def home_view(request):
+def dashboard(request):
     template_name = "dashboard.html"
     return render(request, template_name, context={})
+
+
+def create_event(request):
+    template_name = "create_event.html"
+    return render(request, template_name, context={})
+
 
 
 class LoginView(View):
