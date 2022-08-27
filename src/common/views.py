@@ -53,7 +53,7 @@ class MySchedule(View):
         # schedule = Scheduler.objects.create(
         #     start_time=start_time,
         #     end_time=end_time,
-        #     details=details,
+        #     details=update_reason,
         #     user=request.user
         # )
         messages.success(request, "Schedule updated successfully")
