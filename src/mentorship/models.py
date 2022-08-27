@@ -19,14 +19,15 @@ SESSION_TYPE = (
 )
 
 class MentorshipSession(BaseModel):
-    mentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentee")
-    mentee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentor")
+    mentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentor")
+    mentee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentee")
     session_duration = models.IntegerField(default=30, help_text="mentorship duration in minutes")
     meeting_location = models.TextField()
     session_review = models.TextField()
     session_rating = models.IntegerField(choices=RATING , null=True, blank=True)
     session_type = models.CharField(max_length=300 ,choices=SESSION_TYPE)
-
+    completed_status = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return f"Mentorship session between mentor {self.mentor.username} and mentee {self.mentee.username}"

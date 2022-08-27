@@ -19,18 +19,18 @@
                               </a>
                            </li>
                            <li class="col-md-3 p-0">
-                              <a class="nav-link" data-toggle="pill" href="#chang-pwd">
-                              Change Password
-                              </a>
-                           </li>
-                           <li class="col-md-3 p-0">
                               <a class="nav-link" data-toggle="pill" href="#emailandsms">
-                              Email and SMS
+                                 Professional Information
                               </a>
                            </li>
                            <li class="col-md-3 p-0">
                               <a class="nav-link" data-toggle="pill" href="#manage-contact">
-                              Manage Contact
+                                 Socials
+                              </a>
+                           </li>
+                           <li class="col-md-3 p-0">
+                              <a class="nav-link" data-toggle="pill" href="#chang-pwd">
+                              Change Password
                               </a>
                            </li>
                         </ul>
@@ -51,9 +51,8 @@
                               </div>
                            </div>
                            <div class="card-body">
-                            <form class="forms-sample" method="POST">
+                            <form class="forms-sample" method="POST" id="personal-information"  name="personal-information">
                             {% csrf_token %}
-
                                  <div class="form-group row align-items-center">
                                     <div class="col-md-12">
                                        <div class="profile-img-edit">
@@ -65,7 +64,7 @@
                                             
                                             <div style="display: inline-block;vertical-align: middle;position: relative;background-color: rgba(0, 0, 0, 0.3);color: #fff;border-radius: 50%;height: 48px;width: 48px;" class="avatar">
                                                 <div style="left: 50%;position: absolute;top: 50%;transform: translate(-50%, -50%);">
-                                                    xt
+                                                   {{ current_user.first_name|slice:":1" }}{{ current_user.last_name|slice:":1" }}
                                                 </div>
                                             </div>
                                             
@@ -91,14 +90,14 @@
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <label for="username">User Name:</label>
-                                       <input type="text" class="form-control" id="username" name="username" value="{{current_user.username}}">
+                                       <input type="text" class="form-control" id="username" name="username" value="{{current_user.username}}" readonly>
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <label for="phone">phone number:</label>
                                        <input type="number" class="form-control" id="phone" name="phone" value="{{current_profile.phone}}">
                                     </div>
     
-                                    <div class="form-group col-sm-6">
+                                    <!-- <div class="form-group col-sm-6">
                                        <label class="d-block">Gender:</label>
                                        <div class="custom-control custom-radio custom-control-inline">
                                           <input type="radio" id="customRadio6" value="male" name="customRadio1" class="custom-control-input" checked="">
@@ -110,7 +109,8 @@
                                        </div>
 
                                        
-                                    </div>
+                                    </div> -->
+
                                     <!-- <div class="form-group col-sm-6">
                                        <label for="dob">Date Of Birth:</label>
                                        <input  class="form-control" id="dob" value="1984-01-24">
@@ -124,7 +124,7 @@
                                        </textarea>
                                     </div>
                                  </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                 <button type="submit" class="btn btn-primary mr-2" name="personal-information">Submit</button>
                                  <a type="reset" class="btn iq-bg-danger" href="{% url 'users:user-profile' request.user.username %}">Cancel</a>
                               </form>
                            </div>
@@ -138,22 +138,23 @@
                               </div>
                            </div>
                            <div class="card-body">
-                              <form>
+                              <form method="post" id="change-password" name="change-password">
+                                 {% csrf_token %}
                                  <div class="form-group">
                                     <label for="cpass">Current Password:</label>
                                     <a href="javascripe:void();" class="float-right">Forgot Password</a>
-                                    <input type="Password" class="form-control" id="cpass" value="">
+                                    <input type="Password" class="form-control" name="cpass" name="cpass" value="">
                                  </div>
                                  <div class="form-group">
                                     <label for="npass">New Password:</label>
-                                    <input type="Password" class="form-control" id="npass" value="">
+                                    <input type="Password" class="form-control" id="npass" name="npass" value="">
                                  </div>
                                  <div class="form-group">
                                     <label for="vpass">Verify Password:</label>
-                                    <input type="Password" class="form-control" id="vpass" value="">
+                                    <input type="Password" class="form-control" id="vpass" name="vpass" value="">
                                  </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                 <button type="submit" class="btn btn-primary mr-2" name="change-password">Submit</button>
+                                 <a type="reset" class="btn iq-bg-danger" href="{% url 'users:user-profile' request.user.username %}">Cancel</a>
                               </form>
                            </div>
                         </div>
@@ -162,61 +163,162 @@
                         <div class="card">
                            <div class="card-header d-flex justify-content-between">
                               <div class="iq-header-title">
-                                 <h4 class="card-title">Email and SMS</h4>
+                                 <h4 class="card-title">Professional information</h4>
                               </div>
                            </div>
                            <div class="card-body">
-                              <form>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="emailnotification">Email Notification:</label>
-                                    <div class="col-md-9 custom-control custom-switch">
-                                       <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
-                                       <label class="custom-control-label" for="emailnotification"></label>
-                                    </div>
+                              <form method="post" id="professional-info" name="professional-info">
+                                 {% csrf_token %}
+                                 <div class=" row align-items-center">
+                                 <div class="form-group col-sm-6">
+                                    <label for="current_company">Current Company:</label>
+                                    <input type="text" class="form-control" id="current_company" name="current_company" last_name value={{current_profile.current_company}}>
                                  </div>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="smsnotification">SMS Notification:</label>
-                                    <div class="col-md-9 custom-control custom-switch">
-                                       <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
-                                       <label class="custom-control-label" for="smsnotification"></label>
-                                    </div>
+                                 <div class="form-group col-sm-6">
+                                    <label for="current_job_role">Current Job Role:</label>
+                                    <input type="text" class="form-control" id="current_job_role" name="current_job_role" last_name value={{current_profile.current_job_role}}>
                                  </div>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="npass">When To Email</label>
-                                    <div class="col-md-9">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email01">
-                                          <label class="custom-control-label" for="email01">You have new notifications.</label>
+                                 <div class="form-group col-sm-6">
+                                    <label for="years_of_experience">Years of experience:</label>
+                                    <input type="text" class="form-control" id="years_of_experience" name="years_of_experience" last_name value={{current_profile.years_of_experience}}>
+                                 </div>
+                                  
+                              </div>
+
+                             
+                        
+
+
+
+
+
+                                 <div id="faqAccordion">
+                                    <div class="row">
+                                       <div class="col-lg-12">
+                                          <div class="iq-accordion career-style faq-style">                                            
+                                             <div class="card iq-accordion-block ">
+                                                <div class="active-faq clearfix" id="headingThree">
+                                                   <div class="container-fluid">
+                                                      <div class="row">
+                                                         <div class="col-sm-12"><a role="contentinfo" class="accordion-title collapsed" data-toggle="collapse"  data-target="#industry-accordion" aria-expanded="false" aria-controls="collapseThree"><span>
+                                                            <h3>Industry</h3>
+                                                         </span> </a></div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="accordion-details collapse" id="industry-accordion" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                                                  
+
+                                                  
+                                                   <div class="row text-center">                                                  
+
+                                                         
+                                                      {% if industries %}
+                                                         {% for industry in industries %}
+                                                         <div class="form-check form-group custom-control custom-checkbox col-md-3 mb-3">
+                                                            <input class="custom-control-input form-check-input"
+                                                               type="checkbox"
+                                                               value="{{industry.id}}"
+                                                               id="{{industry.id}}"
+                                                               name="industries"
+
+                                                               {% if industry in industries %}
+                                                               checked
+                                                               {% endif %}
+                                                               >
+                                                            <label class="custom-control-label form-check-label" for="{{industry.id}}">{{industry.name}}</label>
+                                                          </div>  
+                                                         {% endfor %}
+                                                         
+                                                         {% else %}
+                                                      {% endif %}
+
+                                                   </div>
+
+                                                </div>
+                                             </div>  
+                                          </div>
                                        </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email02">
-                                          <label class="custom-control-label" for="email02">You're sent a direct message</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email03" checked="">
-                                          <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                                    <div class="col-md-9">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email04">
-                                          <label class="custom-control-label" for="email04"> Upon new order.</label>
+
+
+                                    <div id="faqAccordion">
+                                       <div class="row">
+                                          <div class="col-lg-12">
+                                             <div class="iq-accordion career-style faq-style">                                            
+                                                <div class="card iq-accordion-block ">
+                                                   <div class="active-faq clearfix" id="headingThree">
+                                                      <div class="container-fluid">
+                                                         <div class="row">
+                                                            <div class="col-sm-12"><a role="contentinfo" class="accordion-title collapsed" data-toggle="collapse"  data-target="#interest-accordion" aria-expanded="false" aria-controls="collapseThree"><span>
+                                                               <h3>Interests</h3>
+                                                            </span> </a></div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="accordion-details collapse" id="interest-accordion" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                                                      <div class="row text-center">                                                         
+                                                         {% if interests %}
+                                                         {% for interest in interests %}
+                                                         
+                                                         <div class="form-check form-group custom-control custom-checkbox col-md-3 mb-3">
+                                                            <input class="custom-control-input form-check-input" 
+                                                            type="checkbox" 
+                                                            value="{{interest.id}}" 
+                                                            id="{{interest.id}}"
+                                                            name="interests"
+                                                            {% if interest in interests %}
+                                                               checked
+                                                            {% endif %}
+                                                            >
+                                                            <label class="custom-control-label form-check-label" for="{{interest.id}}">{{interest.name}}</label>
+                                                          </div>  
+                                                         
+                                                         
+                                                         {% endfor %}
+
+                                                         {% else %}
+                                                         
+                                                         {% endif %}
+
+                                                      </div>
+   
+                                                   </div>
+                                                </div>  
+                                             </div>
+                                          </div>
+                                          </div>
                                        </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email05">
-                                          <label class="custom-control-label" for="email05"> New membership approval</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="email06" checked="">
-                                          <label class="custom-control-label" for="email06"> Member registration</label>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                 
+                              
+
+
+
+
+                                 <button type="submit" class="btn btn-primary mr-2" name="professional-info">Submit</button>
+                                 <a type="reset" class="btn iq-bg-danger" href="{% url 'users:user-profile' request.user.username %}">Cancel</a>
                               </form>
                            </div>
                         </div>
@@ -225,25 +327,34 @@
                         <div class="card">
                            <div class="card-header d-flex justify-content-between">
                               <div class="iq-header-title">
-                                 <h4 class="card-title">Manage Contact</h4>
+                                 <h4 class="card-title">Socials</h4>
                               </div>
                            </div>
                            <div class="card-body">
-                              <form>
+                              <form method="post" id="socials" name="socials">
+                                 {% csrf_token %}
                                  <div class="form-group">
-                                    <label for="cno">Contact Number:</label>
-                                    <input type="text" class="form-control" id="cno" value="001 2536 123 458">
+                                    <label for="twitter">Twitter:</label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter" last_name value={{current_profile.twitter}}>
+
                                  </div>
                                  <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="text" class="form-control" id="email" value="Barryjone@demo.com">
+                                    <label for="github">Github:</label>
+                                    <input type="text" class="form-control" id="github" name="github" last_name value={{current_profile.github}}>
+
                                  </div>
                                  <div class="form-group">
-                                    <label for="url">Url:</label>
-                                    <input type="text" class="form-control" id="url" value="https://getbootstrap.com">
+                                    <label for="linkedin">Linkedin:</label>
+                                    <input type="text" class="form-control" id="linkedin" name="linkedin" last_name value={{current_profile.linkedin}}>
+
                                  </div>
-                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                 <div class="form-group">
+                                    <label for="personal">Personal:</label>
+                                    <input type="text" class="form-control" id="personal" name="personal" last_name value={{current_profile.personal_blog}}>
+
+                                 </div>
+                                 <button type="submit" class="btn btn-primary mr-2" name="socials">Submit</button>
+                                 <a type="reset" class="btn iq-bg-danger" href="{% url 'users:user-profile' request.user.username %}">Cancel</a>
                               </form>
                            </div>
                         </div>
@@ -255,4 +366,3 @@
         </div>
       </div>
 {% endblock content %}
-    

@@ -23,7 +23,7 @@ class Profile(BaseModel):
     nickname = models.TextField()
     bio = models.TextField()
     gender = models.CharField(max_length=10, choices=GENDER, null=True)
-    profile_pic = models.URLField(default = "")
+    profile_pic = models.URLField(default="")
     phone = models.CharField(max_length=20, null=True)
     industry = models.ManyToManyField(Industry, related_name="user_industries")
     years_of_experience = models.IntegerField(default=0)
@@ -34,16 +34,32 @@ class Profile(BaseModel):
     current_company = models.CharField(max_length=10, null=True)
     user_rating = models.CharField(max_length=10, null=True)
     refferal_code = models.CharField(max_length=100, blank=True, null=True)
-    twitter = models.CharField(max_length=200, default="https://www.twitter.com/")
-    github = models.CharField(max_length=200, default="https://www.twitter.com/")
-    facebook = models.CharField(max_length=200, default="https://www.facebook.com/")
-    linkedin = models.CharField(max_length=200, default="https://www.linkedin.com/")
-    personal_blog = models.CharField(max_length=200, default="https://www.facebook.com/")
+    twitter = models.CharField(max_length=200, default="")
+    github = models.CharField(max_length=200, default="")
+    facebook = models.CharField(max_length=200, default="")
+    linkedin = models.CharField(max_length=200, default="")
+    personal_blog = models.CharField(max_length=200, default="")
 
-
-    def get_profile_completion_result():
+    
+    def get_profile_completion_result(self):
         full_score = 100
-        return full_score
+        fields = [self.nickname, self.bio,
+        self.profile_pic,
+        self.phone, self.industry, self.years_of_experience,
+        self.interest, self.skills, self.current_job_role,
+        self.current_company, self.twitter,
+        self.github, self.linkedin, self.personal_blog]
+
+
+
+
+        len_all_fields = len(fields)
+        empty_count = 0
+        for field in range(len(fields)):
+            if fields[field] =="":
+                empty_count += 1
+        unfilled_percentage=(empty_count * 100)/len_all_fields
+        return int(full_score - unfilled_percentage)
 
     def save(self, *args, **kwargs):
         # Add a logic to check if refferal code already exists
