@@ -8,7 +8,7 @@ LOCATION = (
 )
 
 class Event(BaseModel):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="event_creator"
     )
     title = models.TextField()
@@ -16,14 +16,13 @@ class Event(BaseModel):
     location = models.CharField(max_length=200, choices=LOCATION)
     meeting_link = models.CharField(max_length=200)
     registration_link = models.CharField(max_length=200)
-    profile_pic = models.TextField()
+    event_image = models.URLField()
     event_date = models.DateTimeField()
     start_time = models.TimeField()
     end_time = models.TimeField()
-    phone = models.CharField(max_length=20)
-    completed_profile = models.BooleanField(default=False)
-    refferal_code = models.CharField(max_length=100, blank=True, null=True)
-    twitter = models.CharField(max_length=200, default="https://www.twitter.com/")
+    country = models.CharField(max_length=20)
+    state = models.CharField(max_length=20)
+    completed_event = models.BooleanField(default=False)
     registered_users = models.ManyToManyField(User, related_name="event_attendees")
 
     def save(self, *args, **kwargs):

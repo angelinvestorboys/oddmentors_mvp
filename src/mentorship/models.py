@@ -21,9 +21,13 @@ SESSION_TYPE = (
 class MentorshipSession(BaseModel):
     mentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentor")
     mentee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentee")
-    session_duration = models.IntegerField(default=30, help_text="mentorship duration in minutes")
-    meeting_location = models.TextField()
-    session_review = models.TextField()
+    duration = models.IntegerField(default=30, help_text="mentorship duration in minutes")
+    location = models.TextField()
+    details = models.TextField()
+    date = models.DateTimeField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    review = models.ManyToManyField(SessionReview, related_name="session_reviews")
     session_rating = models.IntegerField(choices=RATING , null=True, blank=True)
     session_type = models.CharField(max_length=300 ,choices=SESSION_TYPE)
     completed_status = models.BooleanField(default=False)
@@ -35,6 +39,7 @@ class MentorshipSession(BaseModel):
 
 
 class Scheduler(BaseModel):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="mentors_schedule")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentors_schedule")
     start_available_time = models.TimeField(null=True,blank=True)
     end_available_time = models.TimeField(null=True,blank=True)
+    update_reason = models.TextField()
