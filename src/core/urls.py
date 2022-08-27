@@ -11,7 +11,7 @@ urlpatterns = [
     path("", include("common.urls", namespace="common")),
     path("profile/", include("users.urls", namespace="users")),
 
-    path("event/", include("events.urls", namespace="events")),
+    path("", include("events.urls", namespace="events")),
 ]
 
 admin.site.site_header = _("Oddmentors Backend")
