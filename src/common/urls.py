@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginView,RegisterView ,ResetPasswordView, ChangePasswordView, Logout,FAQView ,HowItWorksView, DashboardView, CreateEventView, MySchedule, ExternalProfile
+from .views import LoginView,RegisterView ,ResetPasswordView, ChangePasswordView, Logout,FAQView ,HowItWorksView, DashboardView, MySchedule, ExternalProfile
 
 app_name = "common"
 
@@ -7,7 +7,6 @@ urlpatterns = [
     path("myschedule/", MySchedule.as_view(), name="myschedule"),
     path("mentor/<str:username>", ExternalProfile.as_view(), name="external_profile"),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
-    path("event/create", CreateEventView.as_view(), name="test"),
     path("login", LoginView.as_view(), name="login"),
     path("register", RegisterView.as_view(), name="register"),
     path("reset-password", ResetPasswordView.as_view(), name="reset-password"),
