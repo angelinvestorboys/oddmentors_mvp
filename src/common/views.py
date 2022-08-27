@@ -5,28 +5,66 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+
+from mentorship.models import Scheduler
 from .send_mail import send_mail
 from string import ( punctuation, whitespace, digits, ascii_lowercase, ascii_uppercase)
 
+class DashboardView(View):
+    def get(self, request):
+        template_name = "dashboard.html"
+        mentorship_sessions = dict()
+        my_events = dict()
+        upcoming_events = dict()
+        past_events = dict()
+        my_feed = dict()
+        return render(request, template_name, context={
+            "mentorship_sessions" : mentorship_sessions,
+            "my_events" : my_events,
+            "upcoming_events" : upcoming_events,
+            "past_events" : past_events,
+            "my_feed" : my_feed,
+        })
 
+class CreateEventView(View):
+    def get(self, request):
+        template_name = "create_event.html"
+        return render(request, template_name, context={})
 
-# Create your views here.
-def dashboard(request):
-    template_name = "dashboard.html"
-    return render(request, template_name, context={})
+class ExternalProfile(View):
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        template_name = "external_profile.html"
+        return render(request, template_name, context={
+            "user": user
+        })
 
+class MySchedule(View):
+    def get(self, request):
+        template_name = "create_schedule.html"
+        return render(request, template_name, context={})
 
-def create_event(request):
-    template_name = "create_event.html"
-    return render(request, template_name, context={})
-
-
+    def post(self, request):
+        print(request.POST)
+        # start_time = request.POST["start_time"]
+        # end_time = request.POST["end_time"]
+        # details = request.POST["details"]
+        # schedule = Scheduler.objects.create(
+        #     start_time=start_time,
+        #     end_time=end_time,
+        #     details=details,
+        #     user=request.user
+        # )
+        messages.success(request, "Schedule updated successfully")
+        return HttpResponseRedirect(request.path_info)
 
 class LoginView(View):
     def get(self, request):
         template_name = "auth/login.html"
         if request.user.is_authenticated:
-            return redirect("common:home")
+            messages.success(request, "you are already authenticated")
+            return redirect("common:dashboard")
         return render(request, template_name, context={})
 
     def post(self, request):
@@ -49,7 +87,8 @@ class RegisterView(View):
     def get(self, request):
         template_name = "auth/register.html"
         if request.user.is_authenticated:
-            return redirect("common:home")
+            messages.success(request, "you are already authenticated")
+            return redirect("common:dashboard")
         return render(request, template_name, context={})
 
     def post(self, request):
@@ -88,7 +127,7 @@ class RegisterView(View):
                 request,
                 "Registration successful , please update your profile to continue and get the best service",
             )
-            return redirect("common:home")
+            return redirect("common:dashboard")
         except Exception as e:
             messages.error(request, "a user with username or email already exists")
             return redirect("common:register")

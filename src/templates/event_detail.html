@@ -1,4 +1,4 @@
-{% extends 'app_base.html' %}
+{% extends 'no_auth_base.html' %}
 {% load static %}
 
 {% block content %}
@@ -14,25 +14,22 @@
                  <p class="text-white text-center mb-5">Event Host</p>
               </div>
               <div class="pro-content rounded">
-                 <div class="mb-2">
+                 <div class="">
                     <p class="">Event Date</p>
                     <p class="text-dark font-weight-bold">20 October 2022</p>
-                    <hr/>
                  </div>
-                 <div class="mb-2">
+                 <div class="">
                     <p class="">Start Time</p>
                     <p class="text-dark font-weight-bold">10 PM</p>
-                    <hr/>
                  </div>
-                 <div class="mb-2">
+                 <div class="">
                     <p class="">End Time</p>
                     <p class="text-dark font-weight-bold">12 PM</p>
-                    <hr/>
                  </div>
                  
-                 <div class="d-flex justify-content-center">
+                 {% comment %} <div class="d-flex justify-content-center">
                     <button type="button" class="btn btn-primary btn-block">Join Event Now</button>
-                 </div>
+                 </div> {% endcomment %}
                  <br/>
                  <div class="d-flex justify-content-center">
                     <button type="button" class="btn btn-outline-primary btn-block">Register For Event</button>

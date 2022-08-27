@@ -1,0 +1,59 @@
+{% extends 'app_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-top" id="personal-information" role="tabpanel">
+    <div class="container">
+        {% include 'partials/messages.html' %}
+        <div class="col-lg-12 mb-4">
+            <div class="py-4 border-bottom">
+                <div class="form-title text-center">
+                    <h3>My Schedule and Availability</h3>
+                </div>
+                <p class="text-center">Set your availability start time and end time , your mentorship sessions would be within these period . </p>
+            </div>
+        </div>
+       <div class="col-lg-12">
+        <div class="d-flex flex-wrap align-items-center justify-content-between my-schedule mb-3">
+           <div class="d-flex align-items-center justify-content-between"> 
+            </div>  
+            {% comment %} <div class="create-workform">
+                <a href="#" data-toggle="modal" data-target="#date-event" class="btn btn-primary pr-5 position-relative">New Schedule<span class="add-btn"><i class="ri-add-line"></i></span></a>
+            </div>                  {% endcomment %}
+        </div>
+        <h4 class="mb-3">Set your availability hours</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-block card-stretch">
+                    <div class="card-body">
+                        
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class=" row align-items-center">
+                               <div class="form-group col-sm-6">
+                                  <label for="lname">Start Time</label>
+                                  <input type="time" required class="form-control" name="start_time" value="01:00:00">
+                               </div>
+                               <div class="form-group col-sm-6">
+                                  <label for="uname">End Time</label>
+                                  <input type="time" required class="form-control" name="end_time" value="22:53:00">
+                               </div>
+                               <div class="form-group col-sm-12">
+                                    <label>Reason For update:</label>
+                                    <textarea required class="form-control" name="details" rows="2"></textarea>
+                                    {% comment %} <textarea required class="form-control" name="details" rows="2">{{scheedule.update_reason}}</textarea> {% endcomment %}
+                                </div>
+                            </div>
+                            <br/>
+                            <button type="submit" class="btn btn-primary mr-2">Update Schedule</button>
+                         </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+ </div>
+{% endblock content %}
