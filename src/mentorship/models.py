@@ -27,6 +27,7 @@ class MentorshipSession(BaseModel):
     mentee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentee")
     duration = models.IntegerField(default=30, help_text="mentorship duration in minutes")
     location = models.TextField()
+    title = models.CharField(max_length=200, default="Mentorship Session")
     details = models.TextField()
     date = models.DateTimeField()
     start_time = models.TimeField()

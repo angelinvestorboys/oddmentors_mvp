@@ -16,7 +16,7 @@ class Event(BaseModel):
     location = models.CharField(max_length=200, choices=LOCATION)
     meeting_link = models.CharField(max_length=200)
     registration_link = models.CharField(max_length=200)
-    event_image = models.URLField()
+    event_image = models.URLField(blank=True, null=True)
     event_date = models.DateTimeField()
     start_time = models.TimeField()
     end_time = models.TimeField()
