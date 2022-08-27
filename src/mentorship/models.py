@@ -18,6 +18,10 @@ SESSION_TYPE = (
     ("Group", "Group")
 )
 
+class SessionReview(BaseModel):
+    review = models.TextField()
+    rating = models.IntegerField(default=0)
+
 class MentorshipSession(BaseModel):
     mentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentor")
     mentee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mentorship_mentee")
