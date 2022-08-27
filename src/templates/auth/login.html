@@ -4,6 +4,8 @@
 {% block content %}
 
 <div class="card-body text-center">
+   <img src="{% static 'assets/images/mylogo.png' %}" class="w-100 img-fluid light-logo" style="max-width: 50%;" alt="logo">
+
     <h2>Sign In</h2>
     <p>Login to stay connected.</p>
     <form class="forms-sample" method="POST">
@@ -11,6 +13,7 @@
       {% include '../partials/messages.html' %}
        <div class="row">
           <div class="col-lg-12">
+
              <div class="floating-input form-group">
                 <input class="form-control" type="text" name="username" id="username" required />
                 <label class="form-label" for="username">username</label>

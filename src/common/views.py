@@ -6,17 +6,27 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-
-from mentorship.models import Scheduler
+from django.db.models import Q
+from events.models import Event
+from mentorship.models import MentorshipSession, Scheduler
 from .send_mail import send_mail
+from datetime import datetime
 from string import ( punctuation, whitespace, digits, ascii_lowercase, ascii_uppercase)
 
-class DashboardView(View):
+class DashboardView(LoginRequiredMixin ,View):
     def get(self, request):
         template_name = "dashboard.html"
-        mentorship_sessions = dict()
-        my_events = dict()
-        upcoming_events = dict()
+        mentorship_sessions = MentorshipSession.objects.filter(
+            Q(mentor=request.user) | Q(mentee=request.user)
+        ).order_by('-created_at')
+        print(mentorship_sessions)
+        my_events = Event.objects.filter(
+             Q(user=request.user) | Q(registered_users__id__in=[request.user.pk])
+        ).order_by('-created_at')
+        # event_time_and_date = datetime.today() + datetime.now()
+        upcoming_events = Event.objects.filter(
+             Q(user=request.user) | Q(registered_users__id__in=[request.user.pk]), Q(event_date=datetime.today()), Q(start_time=datetime.now())
+        ).order_by('-created_at')
         past_events = dict()
         my_feed = dict()
         return render(request, template_name, context={
