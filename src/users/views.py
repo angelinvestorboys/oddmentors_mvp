@@ -54,6 +54,7 @@ class EditProfileView(LoginRequiredMixin, View):
         template_name = "user/user-profile-edit.html"
         current_user = User.objects.filter(username=request.user).first()
         current_profile = current_user.user_profile
+        mentorship_sessions = request.user.mentorship_mentee.count()
 
         skills=Skill.objects.all()
         industries=Industry.objects.all()
@@ -69,6 +70,7 @@ class EditProfileView(LoginRequiredMixin, View):
                 "current_profile": current_profile,
                 "skills": skills,
                 "industries": industries,
+                "mentorship_sessions":mentorship_sessions, 
                 "interests": interests,
             },
         )
