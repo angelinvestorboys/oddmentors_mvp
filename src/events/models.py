@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from common.base_model import BaseModel
+from django_quill.fields import QuillField
+
 
 LOCATION = (
     ("Online", "Online"),
@@ -11,8 +13,8 @@ class Event(BaseModel):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="event_creator"
     )
-    title = models.TextField()
-    description = models.TextField()
+    title=models.CharField(max_length=200)
+    description =QuillField()
     location = models.CharField(max_length=200, choices=LOCATION)
     meeting_link = models.CharField(max_length=200)
     registration_link = models.CharField(max_length=200)

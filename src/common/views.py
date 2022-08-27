@@ -37,10 +37,6 @@ class DashboardView(LoginRequiredMixin ,View):
             "my_feed" : my_feed,
         })
 
-class CreateEventView(View):
-    def get(self, request):
-        template_name = "create_event.html"
-        return render(request, template_name, context={})
 
 class ExternalProfile(View):
     def get(self, request, username):
