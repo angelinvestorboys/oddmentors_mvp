@@ -32,6 +32,7 @@ class Profile(BaseModel):
     completed_profile = models.BooleanField(default=False)
     current_job_role = models.CharField(max_length=10, null=True)
     current_company = models.CharField(max_length=10, null=True)
+    country = models.CharField(max_length=10, null=True , default="Earth")
     user_rating = models.CharField(max_length=10, null=True)
     refferal_code = models.CharField(max_length=100, blank=True, null=True)
     twitter = models.CharField(max_length=200, default="")

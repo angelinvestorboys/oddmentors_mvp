@@ -8,9 +8,9 @@
                <div class="card card-block p-card">
                   <div class="profile-box">
                      <div class="profile-card rounded">
-                        <img src="../assets/images/user/12.jpg" alt="profile-bg" class="avatar-100 rounded d-block mx-auto img-fluid mb-3">
+                        <img src="{{user.user_profile.profile_pic}}" alt="profile-bg" class="avatar-100 rounded d-block mx-auto img-fluid mb-3">
                         <h3 class="font-600 text-white text-center mb-0">{{user.last_name}} {{user.first_name}}</h3>
-                        <p class="text-white text-center mb-5">Web Developer</p>
+                        <p class="text-white text-center mb-5">{{user.user_profile.current_job_role}}</p>
                      </div>
                      <div class="pro-content rounded">
                         <div class="d-flex align-items-center mb-3">
@@ -23,14 +23,14 @@
                            <div class="p-icon mr-3">
                               <i class="las la-map-marked"></i>
                            </div>
-                           <p class="mb-0">USA</p>
+                           <p class="mb-0">{{user.user_profile.country}}</p>
                         </div>
                         <div class="d-flex justify-content-center">
                            <div class="social-ic d-inline-flex rounded">
-                              <a href="#"><i class="fab fa-facebook-f"></i></a>
-                              <a href="#"><i class="fab fa-twitter"></i></a>
-                              <a href="#"><i class="fab fa-youtube"></i></a>
-                              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                              <a href="{{user.user_profile.personal_blog}}"><i class="fas fa-blog"></i></a>
+                              <a href="{{user.user_profile.twitter}}"><i class="fab fa-twitter"></i></a>
+                              <a href="{{user.user_profile.github}}"><i class="fab fa-github"></i></a>
+                              <a href="{{user.user_profile.linkedin}}"><i class="fab fa-linkedin"></i></a>
                            </div>
                         </div>
                         <br/>
@@ -49,7 +49,8 @@
                                         </button>
                                      </div>
                                      <div class="modal-body">
-                                        <form>
+                                        <form method="post">
+                                          {% csrf_token %}
                                             <div class=" row align-items-center">
                                                 <div class="form-group col-12">
                                                     <label for="fname">Session Title:</label>
@@ -63,19 +64,13 @@
                                                
                                                <div class="form-group col-12">
                                                   <label for="lname">Start Time</label>
-                                                  <input type="time" class="form-control" id="start_time" value="Tech">
+                                                  <input type="time" class="form-control" id="start_time" min="09:00" max="18:00">
                                                </div>
                                
-                                                <style>
-                                                   .textarea-tweak {
-                                                       vertical-align:leftAlign;
-                                                       text-align:left;
-                                                   }
-                                                </style>
                                                <div class="form-group col-12">
                                                   <label>Add a short note:</label>
                                                   <div contenteditable="true" class="textarea-tweak">
-                                                   <textarea class="form-control" name="details" rows="3">
+                                                   <textarea class="form-control" name="details" >
                                                    </textarea>
                                                    </div>
                                                </div>
@@ -104,11 +99,7 @@
                      </div>
                   </div>
                   <div class="card-body">
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                     <p>{{user.user_profile.bio}}
                      </p>
                      <h5 class="mb-2 mt-4">Professional Skills</h5>
                      <div class="iq-progress-bar-linear d-inline-block w-100 mb-3">
