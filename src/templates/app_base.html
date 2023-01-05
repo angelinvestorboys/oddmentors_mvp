@@ -172,19 +172,19 @@
               </div>
           </div>
       </div>
-      {% if request.session.profile_completion_status == True %}
-
-      {% else %}
       <div class="content-page">
+      {% if request.user.user_profile.get_profile_completion_result >= 100 %}
+      {% else %}
+      
         <div class="container mt-2">
             <p class="alert alert-info" role="alert">
                 Your profile is {{request.user.user_profile.get_profile_completion_result}}% completed, complete your profile <a href="/profile/edit/{{request.user.username}}" class="alert-link pl-1">here</a>.
             </p>
         </div>
-      {% endif %}
+        {% endif %}
       
         
-    {% block content %}{% endblock content %}
+        {% block content %}{% endblock content %}
     </div>
     {% comment %}  {% endcomment %}
     <!-- Modal -->

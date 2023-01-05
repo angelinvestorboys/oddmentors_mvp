@@ -5,6 +5,7 @@
 {% block content %}
 <div class="content-page">
     <div class="container-fluid container">
+      {% include 'partials/messages.html' %}
 
         <div class="tab-extra active mb-4" id="search-with-button">
             <div class="iq-search-bar d-flex flex-wrap align-items-center search-device mb-2 pr-3">
@@ -28,8 +29,8 @@
                      <div class="subscriber-detail text-center">
                         <div class="image mb-2 position-relative d-inline-block">
                            <img src="{{mentor.user_profile.profile_pic}}" alt="profile" class="img-fluid rounded-circle avatar-100 text-center">
-                           <button type="button" class="btn btn-icon rounded-circle title-instagram iq-card-btn"> <i class="ri-linkedin-line m-0"></i>
-                           </button>
+                           <a href="{{mentor.user_profile.linkedin}}" target="_blank" rel="noopener noreferrer" class="btn btn-icon rounded-circle title-facebook iq-card-btn"> <i class="ri-linkedin-line m-0"></i>
+                           </a>
                         </div>
                         <h5>{{mentor.last_name}} {{mentor.last_name}}</h5>
                         <p class="mb-2">{{mentor.user_profile.current_job_role}}</p>

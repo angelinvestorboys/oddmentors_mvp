@@ -13,6 +13,11 @@ from .send_mail import send_mail
 from datetime import datetime
 from string import ( punctuation, whitespace, digits, ascii_lowercase, ascii_uppercase)
 
+class LandingView(View):
+    def get(self, request):
+        template_name = "index.html"
+        return render(request, template_name, context={})
+
 class DashboardView(LoginRequiredMixin ,View):
     def get(self, request):
         template_name = "dashboard.html"

@@ -6,6 +6,4 @@ admin.site.register(Industry)
 admin.site.register(Skill)
 
 
-
-
 # Register your models here.

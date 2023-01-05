@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import LoginView,RegisterView ,ResetPasswordView, ChangePasswordView, Logout,FAQView ,HowItWorksView, DashboardView, MySchedule, ExternalProfile
+from .views import LoginView,RegisterView ,ResetPasswordView, ChangePasswordView, Logout,FAQView ,HowItWorksView, DashboardView, MySchedule, ExternalProfile,LandingView
 
 app_name = "common"
 
 urlpatterns = [
+    path("", LandingView.as_view(), name="landing"),
     path("myschedule/", MySchedule.as_view(), name="myschedule"),
     path("mentor/<str:username>", ExternalProfile.as_view(), name="external_profile"),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
